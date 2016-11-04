@@ -1,0 +1,28 @@
+# connect to gmail
+openssl s_client -crlf -connect IMAP_SERVER:IMAP_PORT
+openssl s_client -crlf -connect imap.gmail.com:993
+
+# login
+tag login EMAIL_ADDRESS PASSWORD
+tag login user@gmail.com password
+
+# list mailboxes
+tag LIST "" "*"
+
+# select mailbox
+tag SELECT INBOX
+
+# get total number of messages in the selected mailbox
+tag STATUS INBOX (MESSAGES)
+
+# fetch last ten message headers
+tag FETCH 6378:6388 (BODY[HEADER])
+
+# fetch the body of a message
+tag FETCH 6388 (BODY)
+
+# retrieve a particular part (from multipart message) 
+tag FETCH 6388 (BODY[n])
+
+# logout
+tag LOGOUT

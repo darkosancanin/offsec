@@ -1,0 +1,5 @@
+# NTLMv2-SSP Hash
+john --format=netntlmv2 hashes.txt --wordlist=password.lst
+
+# Show the passwords that have been found (stored in ~/.john/john.pot)
+john --show hashes.txt

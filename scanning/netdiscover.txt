@@ -1,0 +1,7 @@
+# discover computers on local lan
+netdiscover -i eth0 -r 192.168.100.0/24
+
+# passive, dont send anything
+netdiscover -i eth0 -p -r 192.168.100.0/24
+
+

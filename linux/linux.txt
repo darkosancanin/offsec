@@ -1,0 +1,53 @@
+# upgrade packages
+apt-get update && apt-get upgrade
+
+# view what users are setup in the system
+cat /etc/passwd
+
+# view user password hashes
+cat /etc/shadow
+
+# check when users last logged in
+lastlog
+
+# monitor authentication/login log file
+tail -f /var/log/auth.log -n 100
+
+# install .deb file
+sudo dpkg -i PATH_TO_FILE
+
+# mount windows share
+sudo apt-get install cifs-utils
+sudo mount.cifs //WindowsPC/Share /root/Windows-Share -o user=Darko
+
+# start a service/daemon
+sudo sshd start
+
+# check architecture
+arch
+uname -a
+
+# check version
+lsb_release -a
+cat /etc/lsb-release 
+cat /etc/debian_version
+cat /etc/os-release
+(Redhat)cat /etc/redhat-release
+
+# find users in a group
+grep sudo /etc/group
+
+# add new user
+useradd -m kaliuser -g kaliuser -s /bin/bash
+
+# add user to a group
+sudo usermod -aG sudo {username}
+
+# search for executable files in /bin /var /etc or /usr that were touched in Aug
+find / -executable -type f 2> /dev/null | egrep -v "^/bin|^/var|^/etc|^/usr" | xargs ls -lh | grep Aug
+
+# view cron tab
+less /etc/crontab
+
+# view cron log
+cat /var/log/cronlog

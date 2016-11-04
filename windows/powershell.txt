@@ -1,0 +1,26 @@
+# enable remoting
+Enable-PSRemoting -Force
+
+# restart the WinRM service
+Restart-Service WinRM
+
+# test remoting connection
+Test-WsMan REMOTE_COMPUTER
+
+# store credentials in variable
+$creds = Get-Credential
+
+# start remoting session
+Enter-PSSession -ComputerName COMPUTER -Credential $cred
+
+# execute one command remotely
+Invoke-Command -ComputerName COMPUTER_NAME -ScriptBlock { Get-ChildItem C:\ } -credential $cred
+
+# add computer to TrustedHosts
+winrm set winrm/config/client @{TrustedHosts="*"}
+
+# run a powershell command remotely via psexec
+psexec \\SERVER_GOES_HERE -u USER_DOMAIN\USER_GOES_HERE -p PASSWORD_GOES_HERE powershell -inputformat none -command "COMMAND_GOES_HERE"
+
+# get the hash of a file
+Get-FileHash -Path PATH_TO_FILE -Algorithm HAS_ALGORITHM_TO_USE

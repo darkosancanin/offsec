@@ -1,0 +1,26 @@
+# key parameters
+-A: Enable OS detection, version detection, script scanning, and traceroute
+-T<0-5>: Set timing template (higher is faster)
+-O: Enable OS detection
+-p <port ranges>: Only scan specified ports
+-p-: Scan all ports
+Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
+-Pn: Treat all hosts as online -- skip host discovery
+-sV: Probe open ports to determine service/version info
+-sS/sT: TCP SYN/Connect()
+-sU: UDP Scan
+-sn: Ping Scan - disable port scan
+-r: Scan ports consecutively, not randomly
+-F: Scan 100 most common ports (Fast)
+
+# ping scan
+nmap -sn 10.0.0.0/24
+
+# general heavy scan
+nmap -A 10.0.0.0/24
+
+# display netbios name 
+nmap -sU --script nbstat.nse -p 137 10.0.0.0/24
+
+# check if Netbios servers are vulnerable to MS08-067
+nmap --script-args=unsafe=1 --script smb-vuln-ms08-067.nse -p 445 192.168.79.130

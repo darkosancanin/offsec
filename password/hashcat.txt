@@ -1,0 +1,28 @@
+# crack wpa file with 10 digit numbering distributed across 5 computers
+./cudaHashcat64.bin -m 2500 -a 3 ~/handshakes/hccap/HOMEWLAN_c6.hccap -1 01 ?1?d?d?d?d?d?d?d?d?d --status
+./cudaHashcat64.bin -m 2500 -a 3 ~/handshakes/hccap/HOMEWLAN_c6.hccap -1 23 ?1?d?d?d?d?d?d?d?d?d --status
+./cudaHashcat64.bin -m 2500 -a 3 ~/handshakes/hccap/HOMEWLAN_c6.hccap -1 45 ?1?d?d?d?d?d?d?d?d?d --status
+./cudaHashcat64.bin -m 2500 -a 3 ~/handshakes/hccap/HOMEWLAN_c6.hccap -1 67 ?1?d?d?d?d?d?d?d?d?d --status
+./cudaHashcat64.bin -m 2500 -a 3 ~/handshakes/hccap/HOMEWLAN_c6.hccap -1 89 ?1?d?d?d?d?d?d?d?d?d --status
+
+# crack wpa file with wordlist
+./cudaHashcat64.bin -m 2500 ~/handshakes/wificapture.hccap ~/passwords/crackstation.txt --status
+
+# crack various hashes
+Test MD5 - MyStrongPassword1
+./cudaHashcat64.bin "a26bd4201f938c42cb9acd1fc173a42d" ~/passwords/crackstation.txt --status
+
+Test MD4 - MyStrongPassword1
+./cudaHashcat64.bin "e2a3e8d16e04c9ff79fc80493526ec3c" ~/passwords/crackstation.txt --status
+
+Test SHA-1 - MyStrongPassword1
+./cudaHashcat64.bin "eb73452d1731028905689089860128bcd406c6b0" ~/passwords/crackstation.txt --status
+
+Test SHA-256 - MyStrongPassword1
+./cudaHashcat64.bin "f6a273076789200eff231cc42436e65ec44d8c7c1502848dae974a6071080953" ~/passwords/crackstation.txt --status
+
+Test SHA-512 - MyStrongPassword1
+./cudaHashcat64.bin "f9c4cab7d49d9a07756e3584bb7fa2e17a307b23af0f42cf2de10e8c90e0ecc586fb46d767825c3cea184b22b129f53d19ec232d5753cd99ae29c57e4637c648" ~/passwords/crackstation.txt --status
+
+# NTLMv2-SSP Hash
+hashcat -m 5600  "hash_goes_here" passwords.txt --status

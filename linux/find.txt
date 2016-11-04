@@ -1,0 +1,38 @@
+# find SUID or GUID files
+find / -perm -g=s -o -perm -u=s -type f 2>/dev/null
+
+# find SUID or GUID files in 'common' places: /bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin, /usr/local/sbin and any other *bin, for SGID or SUID (Quicker search)
+for i in `locate -r "bin$"`; do find $i \( -perm -4000 -o -perm -2000 \) -type f 2>/dev/null; done
+
+# find SUID or GUID starting at root (/), SGID or SUID, not Symbolic links, only 3 folders deep, list with more detail and hide any errors (e.g. permission denied)
+find / -perm -g=s -o -perm -4000 ! -type l -maxdepth 3 -exec ls -ld {} \; 2>/dev/null
+
+# find files of a specific size
+find / -size 1033c
+
+# find files accessed within the last 1 day/1 hour
+find / -atime -1
+find / -amin -60
+
+# find files whose inode changed within thelast 1 day/1 hour
+find / -ctime -1
+find / -cmin -60
+
+# find files modified within the last 1 day/1 hour
+find / -mtime -1
+find / -mmin -60
+
+# find files newer than another files
+find -newer /etc/passwd
+
+# find files owned by user
+find / -user ftpuser
+
+# find files owned by group
+find / -group ftpusers
+
+# find files by name 
+find / -name "*.c"
+
+ 
+

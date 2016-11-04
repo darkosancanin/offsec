@@ -1,0 +1,21 @@
+# install
+mkdir /opt/spiderfoot/ && cd /opt/spiderfoot
+wget http://sourceforge.net/projects/spiderfoot/files/spiderfoot-2.7.0-src.tar.gz/download
+tar xzvf download
+pip install lxml
+pip install netaddr
+pip install M2Crypto
+pip install cherrypy
+pip install mako
+
+cd spiderfoot-2.7.0
+
+# start app
+python ./sf.py
+
+# use app
+open up a browser and go to http://127.0.0.1:5001/
+
+
+
+

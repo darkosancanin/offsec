@@ -1,0 +1,16 @@
+# clone repo
+git clone https://github.com/leebaird/discover.git /opt/discover
+cd /opt/discover
+
+# passive scan
+1, then 1, then company name then domain name
+
+# display results
+firefox /root/data/[Domain]/index.htm
+
+
+
+
+
+
+

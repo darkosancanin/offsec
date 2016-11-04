@@ -1,0 +1,33 @@
+# add user
+net user /add USER_GOES_HERE PASSWORD_GOES_HERE
+net user /add test_user x4$5sjlw678!'
+
+# add user to group
+net localgroup GROUP_GOES_HERE USER_GOES_HERE /add
+net localgroup administrators test_user /add
+
+# list users in a group
+net localgroup GROUP_GOES_HERE
+net localgroup administrators
+
+# list local users
+net user
+
+# details of a user
+net user USER_GOES_HERE
+net user test_user
+
+# list local groups
+net localgroup
+
+# get hostname from ip address
+nbtstat -A IP_GOES_HERE
+
+# view network connections
+net use
+
+# delete network connection
+net use SHARE_NAME_GOES_HERE /delete 
+
+# view service processes
+tasklist /svc
