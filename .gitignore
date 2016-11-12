@@ -1,2 +1,4 @@
 .gdb_history
 peda-session*
+pattern.txt
+payload
